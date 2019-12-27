@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Id":  1,
+    "Name": "Think and Grow rich",
+    "Author": "Napoleon Hill",
+    "Pages": "500"
+  },
+  {
+    "Id": 2,
+    "Name": "How to be rich",
+    "Author": "Harri Puttar",
+    "Pages": "300"
+  },
+  {
+    "Id": 3,
+    "Name": "How weight in 15 days",
+    "Author": "Chunket Pandet",
+    "Pages": "420"
+  }
+]

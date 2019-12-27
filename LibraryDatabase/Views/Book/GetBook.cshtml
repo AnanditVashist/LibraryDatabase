@@ -1,0 +1,16 @@
+﻿@using LibraryDatabase.Models
+@{
+    ViewBag.Title = "Book Detail";
+}
+@model Book
+
+<h2>Book Detail</h2>
+
+<div>
+    <h3>Book Details</h3>
+    <p>
+        Book Name: @Model.Name<br>
+        Author: @Model.Author<br>
+        Pages: @Model.Pages<br>
+    </p>
+</div>
