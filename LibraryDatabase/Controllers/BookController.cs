@@ -19,7 +19,7 @@ namespace LibraryDatabase.Controllers
             ViewBag.Books = BookDataService.GetAllBooks();
 
             //If method was not static - I would need to instansiate an object
-            //var service = new BookDataService();
+            var service = new BookDataService();
             //ViewBag.Books = service.GetAllBooks();
 
             return View();
