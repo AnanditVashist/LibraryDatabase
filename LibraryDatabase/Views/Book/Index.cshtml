@@ -17,11 +17,15 @@
             }
         </ul>
         <button id="reset">Reset</button>
+        <form method="post" action="@Url.Action("GetBook", "Book")" id="bookDetailForm">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="selectedBook" name="selectedBook" />
+        </form>
     </div>
 
-    <form method="post" action="@Url.Action("GetBook", "Book")" id="bookDetailForm">
+    <form method="post" action="@Url.Action("RunSelenium", "Book")" id="runSeleniumForm">
         @Html.AntiForgeryToken()
-        <input type="hidden" id="selectedBook" name="selectedBook" />
+        <button type="submit">Run It</button>
     </form>
 
     <ul id="booknames"

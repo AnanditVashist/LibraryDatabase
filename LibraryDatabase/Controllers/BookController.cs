@@ -1,6 +1,8 @@
 ﻿using LibraryDatabase.Infrastructure.Services;
 using LibraryDatabase.Infrastructure.Utils;
+using OpenQA.Selenium.Chrome;
 using System;
+using System.Threading;
 using System.Web.Mvc;
 
 namespace LibraryDatabase.Controllers
@@ -19,7 +21,7 @@ namespace LibraryDatabase.Controllers
             ViewBag.Books = BookDataService.GetAllBooks();
 
             //If method was not static - I would need to instansiate an object
-            var service = new BookDataService();
+            //var service = new BookDataService();
             //ViewBag.Books = service.GetAllBooks();
 
             return View();
@@ -38,12 +40,33 @@ namespace LibraryDatabase.Controllers
             }
 
             //Check if book exists
-            //TODO
+            if (!BookDataService.Exists(bookId))
+            {
+                return HttpNotFound();
+            }
 
-
-            var id = Convert.ToInt32(bookId);
-            var book = BookDataService.GetBookById(id);
+            var book = BookDataService.GetBookById(Convert.ToInt32(bookId));
             return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RunSelenium()
+        {
+
+            var driver = new ChromeDriver("C:/Users/User1/Desktop")
+
+            {
+                Url = ("http://127.0.0.1:5500/views/checklist.html")
+
+            };
+            Thread.Sleep(2000);
+            var submitButton = driver.FindElementByXPath("//*[@id='body']/div[1]/a[2]/input");
+            submitButton.Click();
+            Console.ReadLine();
+            driver.Dispose();
+
+            return View();
         }
     }
 }

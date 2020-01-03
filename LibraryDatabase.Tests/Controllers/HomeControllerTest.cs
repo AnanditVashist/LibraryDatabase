@@ -1,23 +1,27 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LibraryDatabase.Controllers;
+using OpenQA.Selenium.Chrome;
 
-namespace LibraryDatabase.Tests.Controllers
+namespace cicTest
 {
     [TestClass]
-    public class HomeControllerTest
+    public class UnitTest1
     {
         [TestMethod]
-        public void Index()
+        public void TestMethod1()
         {
-            // Arrange
-            HomeController controller = new HomeController();
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
+            var driver = new ChromeDriver("C:/Users/User1/Desktop")
+            
+            {
+                Url = ("http://127.0.0.1:5500/views/checklist.html")
+                
+            };
+            var submitButton = driver.FindElementByXPath("//*[@id='body']/div[1]/a[2]/input");
+            submitButton.Click();
+            System.Console.ReadLine();
+            driver.Dispose();
 
-            // Assert
-            Assert.IsNotNull(result);
         }
     }
 }

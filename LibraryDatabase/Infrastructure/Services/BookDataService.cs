@@ -31,5 +31,22 @@ namespace LibraryDatabase.Infrastructure.Services
             string bookJson = System.IO.File.ReadAllText(jsonPath);
             return JsonConvert.DeserializeObject<List<Book>>(bookJson);
         }
+
+        public static bool Exists(string bookId)
+        {
+            var books = GetAllBooks();
+
+
+            foreach (var book in books)
+            {
+                if (book.Id == Convert.ToInt32(bookId))
+                {
+                    return true;
+                }
+
+
+            }
+            return false;
+        }
     }
 }
